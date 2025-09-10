@@ -1,23 +1,17 @@
 class Mahasiswa {
-  String nama;
   String nim;
-  List<Map<String, String>> absensi = [];
+  String nama;
+  String password;
+  List<String> absensi = [];
 
-  Mahasiswa(this.nama, this.nim);
+  Mahasiswa(this.nim, this.nama, this.password);
 
-  void login() {
-    print("Mahasiswa $nama ($nim) berhasil login.");
+  bool login(String inputNim, String inputPassword) {
+    return nim == inputNim && password == inputPassword;
   }
 
-  void absen(String tanggal, String jam) {
-    absensi.add({"tanggal": tanggal, "jam": jam});
-    print("$nama absen pada $tanggal jam $jam");
-  }
-
-  void lihatAbsensi() {
-    print("Riwayat Absensi $nama:");
-    for (var a in absensi) {
-      print("- ${a['tanggal']} | ${a['jam']}");
-    }
+  void absen(String tanggal) {
+    absensi.add(tanggal);
+    print("$nama berhasil absen pada $tanggal");
   }
 }
